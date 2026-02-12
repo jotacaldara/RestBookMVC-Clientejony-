@@ -1,0 +1,72 @@
+﻿@using Microsoft.AspNetCore.Http.Features
+
+@{
+    var consentFeature = Context.Features.Get<ITrackingConsentFeature>();
+    var showBanner = !consentFeature?.CanTrack ?? false;
+    var cookieString = consentFeature?.CreateConsentCookie();
+}
+
+@if (showBanner)
+{
+    <div id="cookieConsent"
+         class="fixed-bottom bg-white shadow-lg border-top p-4"
+         style="z-index:1050;">
+
+        <div class="container">
+            <div class="row align-items-center">
+
+                <div class="col-md-8">
+                    <h5 class="fw-bold">
+                        <i class="bi bi-cookie text-warning"></i>
+                        Valorizamos sua privacidade
+                    </h5>
+
+                    <p class="text-muted mb-0 small">
+                        Utilizamos cookies para melhorar sua experiência,
+                        manter sua sessão ativa e analisar o tráfego do site.
+                        Ao clicar em "Aceitar", você concorda com o uso de cookies.
+                    </p>
+                </div>
+
+                <div class="col-md-4 text-md-end mt-3 mt-md-0">
+                    <button type="button"
+                            id="denyCookies"
+                            class="btn btn-outline-secondary btn-sm rounded-pill px-4 me-2">
+                        Negar
+                    </button>
+
+                    <button type="button"
+                            id="acceptCookies"
+                            class="btn btn-primary btn-sm rounded-pill px-4"
+                            data-cookie-string="@cookieString">
+                        Aceitar Cookies
+                    </button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+
+            const banner = document.getElementById("cookieConsent");
+            const acceptBtn = document.getElementById("acceptCookies");
+            const denyBtn = document.getElementById("denyCookies");
+
+            if (acceptBtn) {
+                acceptBtn.addEventListener("click", function () {
+                    document.cookie = acceptBtn.dataset.cookieString;
+                    banner.remove();
+                });
+            }
+
+            if (denyBtn) {
+                denyBtn.addEventListener("click", function () {
+                    banner.remove();
+                });
+            }
+
+        });
+    </script>
+}
