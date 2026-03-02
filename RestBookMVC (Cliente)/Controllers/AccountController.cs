@@ -122,7 +122,7 @@ public class AccountController : Controller
     }
 
     [HttpPost]
-    [ValidateAntiForgeryToken] // Boa prática de segurança
+    [ValidateAntiForgeryToken] 
     public async Task<IActionResult> CancelReservation(int id)
     {
         var success = await _api.DeleteAsync($"api/reservations/{id}");

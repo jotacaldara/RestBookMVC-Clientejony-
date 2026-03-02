@@ -1,51 +1,71 @@
-﻿@model RestBookMVC__Cliente_.DTOs.RegisterDTO
+﻿@using RestBookMVC__Cliente_.DTOs
+@using Microsoft.Extensions.Localization
+@using Microsoft.AspNetCore.Mvc.Localization
+@using RestBookMVC__Cliente_
+@inject IStringLocalizer<SharedResource> Localizer
+@model RegisterDTO
+
+@{
+    ViewData["Title"] = Localizer["Register_Title"].Value;
+}
 
 <div class="row justify-content-center mt-5">
     <div class="col-md-6 col-lg-5">
         <div class="card border-0 shadow-sm p-4">
             <div class="card-body">
-                <h2 class="text-center fw-bold text-primary mb-4">Criar Conta</h2>
+                <div class="text-center mb-4">
+                    <i class="bi bi-person-plus-fill text-primary" style="font-size: 2rem;"></i>
+                    <h2 class="fw-bold text-primary mt-2">@Localizer["Register_Title"]</h2>
+                    <p class="text-muted small">@Localizer["Register_Subtitle"]</p>
+                </div>
 
                 <form asp-action="Register" method="post">
                     <div asp-validation-summary="ModelOnly" class="text-danger small mb-3"></div>
 
                     <div class="mb-3">
-                        <label asp-for="FullName" class="form-label"></label>
-                        <input asp-for="FullName" class="form-control" placeholder="Seu nome completo" />
+                        <label asp-for="FullName" class="form-label fw-semibold">@Localizer["Register_Name"]</label>
+                        <input asp-for="FullName" class="form-control" placeholder="@Localizer["Register_NamePlaceholder"]" />
                         <span asp-validation-for="FullName" class="text-danger small"></span>
                     </div>
 
                     <div class="row">
                         <div class="col-md-6 mb-3">
-                            <label asp-for="Email" class="form-label"></label>
-                            <input asp-for="Email" class="form-control" placeholder="email@exemplo.com" />
+                            <label asp-for="Email" class="form-label fw-semibold">@Localizer["Register_Email"]</label>
+                            <input asp-for="Email" class="form-control" placeholder="@Localizer["Register_EmailPlaceholder"]" />
                             <span asp-validation-for="Email" class="text-danger small"></span>
                         </div>
                         <div class="col-md-6 mb-3">
-                            <label asp-for="Phone" class="form-label"></label>
-                            <input asp-for="Phone" class="form-control" placeholder="999 999 999" />
+                            <label asp-for="Phone" class="form-label fw-semibold">@Localizer["Register_Phone"]</label>
+                            <input asp-for="Phone" class="form-control" placeholder="@Localizer["Register_PhonePlaceholder"]" />
                             <span asp-validation-for="Phone" class="text-danger small"></span>
                         </div>
                     </div>
 
                     <div class="row">
                         <div class="col-md-6 mb-3">
-                            <label asp-for="Password" class="form-label"></label>
-                            <input asp-for="Password" class="form-control" />
+                            <label asp-for="Password" class="form-label fw-semibold">@Localizer["Register_Password"]</label>
+                            <input asp-for="Password" class="form-control" placeholder="@Localizer["Register_PasswordPlaceholder"]" />
                             <span asp-validation-for="Password" class="text-danger small"></span>
                         </div>
                         <div class="col-md-6 mb-3">
-                            <label asp-for="ConfirmPassword" class="form-label"></label>
-                            <input asp-for="ConfirmPassword" class="form-control" />
+                            <label asp-for="ConfirmPassword" class="form-label fw-semibold">@Localizer["Register_ConfirmPassword"]</label>
+                            <input asp-for="ConfirmPassword" class="form-control" placeholder="@Localizer["Register_ConfirmPasswordPlaceholder"]" />
                             <span asp-validation-for="ConfirmPassword" class="text-danger small"></span>
                         </div>
                     </div>
 
-                    <button type="submit" class="btn btn-primary w-100 btn-lg mt-3 shadow-sm">Cadastrar</button>
+                    <p class="small text-muted mb-3">@Localizer["Register_TermsNote"]</p>
+
+                    <button type="submit" class="btn btn-primary w-100 btn-lg mt-2 shadow-sm">
+                        <i class="bi bi-person-check me-2"></i>@Localizer["Register_Submit"]
+                    </button>
                 </form>
 
                 <hr class="my-4">
-                <p class="text-center mb-0">Já tem uma conta? <a asp-action="Login" class="text-decoration-none">Faça Login</a></p>
+                <p class="text-center mb-0 small">
+                    @Localizer["Register_HaveAccount"]
+                    <a asp-controller="Account" asp-action="Login" class="text-decoration-none fw-semibold">@Localizer["Register_Login"]</a>
+                </p>
             </div>
         </div>
     </div>
@@ -54,34 +74,3 @@
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />
 }
-
-<style>
-    .auth-card {
-        max-width: 450px;
-        margin: 50px auto;
-        border-radius: 20px;
-        border: none;
-        box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-    }
-
-    .auth-input {
-        border-radius: 10px;
-        padding: 12px 20px;
-        border: 1px solid #eee;
-    }
-
-        .auth-input:focus {
-            border-color: #e63946;
-            box-shadow: 0 0 0 0.25rem rgba(230, 57, 70, 0.1);
-        }
-</style>
-
-<div class="container">
-    <div class="card auth-card p-4">
-        <div class="text-center mb-4">
-            <h2 class="fw-bold">Bem-vindo ao <span class="text-primary">RestBook</span></h2>
-            <p class="text-muted">Acesse sua conta para gerir suas reservas.</p>
-        </div>
-
-    </div>
-</div>

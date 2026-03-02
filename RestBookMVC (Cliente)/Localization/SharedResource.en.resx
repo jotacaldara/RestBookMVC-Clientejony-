@@ -1,0 +1,211 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+		<xsd:element name="root" msdata:IsDataSet="true">
+			<xsd:complexType>
+				<xsd:choice maxOccurs="unbounded">
+					<xsd:element name="data">
+						<xsd:complexType>
+							<xsd:sequence>
+								<xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+							</xsd:sequence>
+							<xsd:attribute name="name" type="xsd:string" use="required" />
+							<xsd:attribute name="xml:space" use="optional" />
+						</xsd:complexType>
+					</xsd:element>
+				</xsd:choice>
+			</xsd:complexType>
+		</xsd:element>
+	</xsd:schema>
+	<resheader name="resmimetype">
+		<value>text/microsoft-resx</value>
+	</resheader>
+	<resheader name="version">
+		<value>1.3</value>
+	</resheader>
+	<resheader name="reader">
+		<value>System.Resources.ResXResourceReader, System.Windows.Forms</value>
+	</resheader>
+	<resheader name="writer">
+		<value>System.Resources.ResXResourceWriter, System.Windows.Forms</value>
+	</resheader>
+
+	<!-- Nav / Footer / Cookie -->
+	<data name="Nav_Features" xml:space="preserve"><value>Features</value></data>
+	<data name="Nav_Pricing" xml:space="preserve"><value>Pricing</value></data>
+	<data name="Nav_Contact" xml:space="preserve"><value>Contact</value></data>
+	<data name="Nav_Login" xml:space="preserve"><value>Sign In</value></data>
+	<data name="Nav_GetStarted" xml:space="preserve"><value>Get Started</value></data>
+	<data name="Footer_Tagline" xml:space="preserve"><value>Complete restaurant management system. Simplify your daily operations.</value></data>
+	<data name="Footer_Company" xml:space="preserve"><value>Company</value></data>
+	<data name="Footer_AboutUs" xml:space="preserve"><value>About Us</value></data>
+	<data name="Footer_Features" xml:space="preserve"><value>Features</value></data>
+	<data name="Footer_Plans" xml:space="preserve"><value>Plans</value></data>
+	<data name="Footer_Contact" xml:space="preserve"><value>Contact</value></data>
+	<data name="Footer_Rights" xml:space="preserve"><value>All rights reserved.</value></data>
+	<data name="Footer_MadeWith" xml:space="preserve"><value>Made with ❤️ for restaurants</value></data>
+	<data name="Cookie_Message" xml:space="preserve"><value>We use cookies to improve your experience. By continuing, you accept our privacy policy.</value></data>
+	<data name="Cookie_Accept" xml:space="preserve"><value>Accept</value></data>
+	<data name="Cookie_Decline" xml:space="preserve"><value>Decline</value></data>
+
+	<!-- Home/Index.cshtml (Restaurant Listing) -->
+	<data name="Home_Title" xml:space="preserve"><value>Restaurants</value></data>
+	<data name="Home_HeroTitle" xml:space="preserve"><value>Where are we eating today?</value></data>
+	<data name="Home_HeroSubtitle" xml:space="preserve"><value>Discover and book the best restaurants in your city.</value></data>
+	<data name="Home_SearchPlaceholder" xml:space="preserve"><value>Enter a city (e.g. Lisbon, Porto...)</value></data>
+	<data name="Home_SearchButton" xml:space="preserve"><value>Search</value></data>
+
+	<!-- Landing Page -->
+	<data name="Home_HeroBadge" xml:space="preserve"><value>Complete Solution</value></data>
+	<data name="Home_HeroTitle1" xml:space="preserve"><value>Transform the management of your</value></data>
+	<data name="Home_HeroTitleHighlight" xml:space="preserve"><value>restaurant</value></data>
+	<data name="Home_HeroSubtitleLanding" xml:space="preserve"><value>From orders to food cost control, your restaurant in the palm of your hand. Manage reservations, menus, staff and much more on a single platform.</value></data>
+	<data name="Home_HeroCTA" xml:space="preserve"><value>Get Started Now</value></data>
+	<data name="Home_HeroLogin" xml:space="preserve"><value>Sign In</value></data>
+	<data name="Home_HeroTrustedBy" xml:space="preserve"><value>Trusted by over 100+ restaurants</value></data>
+	<data name="Home_FeaturesTitle" xml:space="preserve"><value>Everything you need to manage your restaurant</value></data>
+	<data name="Home_FeaturesSubtitle" xml:space="preserve"><value>A complete platform built for the real challenges of restaurants.</value></data>
+	<data name="Home_Feature1_Title" xml:space="preserve"><value>Online Reservations</value></data>
+	<data name="Home_Feature1_Desc" xml:space="preserve"><value>Customers make reservations online 24/7. Receive real-time notifications.</value></data>
+	<data name="Home_Feature2_Title" xml:space="preserve"><value>Menu Management</value></data>
+	<data name="Home_Feature2_Desc" xml:space="preserve"><value>Update your dishes, prices and availability in real time.</value></data>
+	<data name="Home_Feature3_Title" xml:space="preserve"><value>Staff Control</value></data>
+	<data name="Home_Feature3_Desc" xml:space="preserve"><value>Manage schedules, performance and communication with your team.</value></data>
+	<data name="Home_Feature4_Title" xml:space="preserve"><value>Advanced Analytics</value></data>
+	<data name="Home_Feature4_Desc" xml:space="preserve"><value>Detailed reports on sales, occupancy and customer satisfaction.</value></data>
+	<data name="Home_Feature5_Title" xml:space="preserve"><value>Table Orders</value></data>
+	<data name="Home_Feature5_Desc" xml:space="preserve"><value>QR Code ordering system. Reduce errors and improve customer experience.</value></data>
+	<data name="Home_Feature6_Title" xml:space="preserve"><value>Reviews &amp; Reputation</value></data>
+	<data name="Home_Feature6_Desc" xml:space="preserve"><value>Collect and respond to customer reviews. Build a solid reputation.</value></data>
+	<data name="Home_PricingTitle" xml:space="preserve"><value>Simple and transparent pricing</value></data>
+	<data name="Home_PricingSubtitle" xml:space="preserve"><value>Choose the plan that best suits your business. No surprises.</value></data>
+	<data name="Home_PricingMonthly" xml:space="preserve"><value>month</value></data>
+	<data name="Home_PricingCTA" xml:space="preserve"><value>Start with this plan</value></data>
+	<data name="Home_PricingPopular" xml:space="preserve"><value>Most Popular</value></data>
+	<data name="Home_StatsRestaurants" xml:space="preserve"><value>Restaurants</value></data>
+	<data name="Home_StatsReservations" xml:space="preserve"><value>Reservations managed</value></data>
+	<data name="Home_StatsRating" xml:space="preserve"><value>Average rating</value></data>
+	<data name="Home_StatsUptime" xml:space="preserve"><value>Uptime</value></data>
+	<data name="Home_TestimonialsTitle" xml:space="preserve"><value>What our customers say</value></data>
+	<data name="Home_CTASectionTitle" xml:space="preserve"><value>Ready to transform your restaurant?</value></data>
+	<data name="Home_CTASectionSubtitle" xml:space="preserve"><value>Join hundreds of restaurants that have already simplified their management with RestFlow.</value></data>
+	<data name="Home_CTAButton" xml:space="preserve"><value>Register your restaurant</value></data>
+	<data name="Home_CTALogin" xml:space="preserve"><value>Already have an account? Sign in</value></data>
+
+	<!-- Login.cshtml -->
+	<data name="Login_Title" xml:space="preserve"><value>Sign In</value></data>
+	<data name="Login_Subtitle" xml:space="preserve"><value>Access your account to manage your reservations.</value></data>
+	<data name="Login_Email" xml:space="preserve"><value>Email</value></data>
+	<data name="Login_EmailPlaceholder" xml:space="preserve"><value>name@example.com</value></data>
+	<data name="Login_Password" xml:space="preserve"><value>Password</value></data>
+	<data name="Login_PasswordPlaceholder" xml:space="preserve"><value>••••••••</value></data>
+	<data name="Login_RememberMe" xml:space="preserve"><value>Remember me</value></data>
+	<data name="Login_ForgotPassword" xml:space="preserve"><value>Forgot password?</value></data>
+	<data name="Login_Submit" xml:space="preserve"><value>Sign In</value></data>
+	<data name="Login_NoAccount" xml:space="preserve"><value>Don't have an account?</value></data>
+	<data name="Login_Register" xml:space="preserve"><value>Register here</value></data>
+	<data name="Login_ErrorInvalid" xml:space="preserve"><value>Invalid email or password.</value></data>
+	<data name="Login_BackToHome" xml:space="preserve"><value>Back to home</value></data>
+
+	<!-- Register.cshtml -->
+	<data name="Register_Title" xml:space="preserve"><value>Create Account</value></data>
+	<data name="Register_Subtitle" xml:space="preserve"><value>Create your free account and start making reservations.</value></data>
+	<data name="Register_Name" xml:space="preserve"><value>Full name</value></data>
+	<data name="Register_NamePlaceholder" xml:space="preserve"><value>Your full name</value></data>
+	<data name="Register_Email" xml:space="preserve"><value>Email</value></data>
+	<data name="Register_EmailPlaceholder" xml:space="preserve"><value>email@example.com</value></data>
+	<data name="Register_Phone" xml:space="preserve"><value>Phone</value></data>
+	<data name="Register_PhonePlaceholder" xml:space="preserve"><value>9XX XXX XXX</value></data>
+	<data name="Register_Password" xml:space="preserve"><value>Password</value></data>
+	<data name="Register_PasswordPlaceholder" xml:space="preserve"><value>Minimum 6 characters</value></data>
+	<data name="Register_ConfirmPassword" xml:space="preserve"><value>Confirm password</value></data>
+	<data name="Register_ConfirmPasswordPlaceholder" xml:space="preserve"><value>Repeat your password</value></data>
+	<data name="Register_Submit" xml:space="preserve"><value>Create Account</value></data>
+	<data name="Register_HaveAccount" xml:space="preserve"><value>Already have an account?</value></data>
+	<data name="Register_Login" xml:space="preserve"><value>Sign In</value></data>
+	<data name="Register_Success" xml:space="preserve"><value>Account created successfully! You can now log in.</value></data>
+	<data name="Register_ErrorExists" xml:space="preserve"><value>Could not create the account. The email may already be registered.</value></data>
+	<data name="Register_TermsNote" xml:space="preserve"><value>By creating an account you agree to our Terms of Service and Privacy Policy.</value></data>
+
+	<!-- Restaurants/Details.cshtml -->
+	<data name="Details_Home" xml:space="preserve"><value>Home</value></data>
+	<data name="Details_AboutTitle" xml:space="preserve"><value>About the Restaurant</value></data>
+	<data name="Details_Reviews" xml:space="preserve"><value>reviews</value></data>
+	<data name="Details_ReviewsTitle" xml:space="preserve"><value>Customer Reviews</value></data>
+	<data name="Details_NoReviews" xml:space="preserve"><value>No reviews yet. Be the first!</value></data>
+	<data name="Details_RestaurantReply" xml:space="preserve"><value>Restaurant reply</value></data>
+	<data name="Details_ReserveTitle" xml:space="preserve"><value>Make a Reservation</value></data>
+	<data name="Details_ReserveDate" xml:space="preserve"><value>Date &amp; Time</value></data>
+	<data name="Details_ReservePeople" xml:space="preserve"><value>Number of People</value></data>
+	<data name="Details_ReserveButton" xml:space="preserve"><value>Reserve Table</value></data>
+	<data name="Details_ReserveLoginRequired" xml:space="preserve"><value>Please sign in to make a reservation.</value></data>
+	<data name="Details_ContactTitle" xml:space="preserve"><value>Contact Information</value></data>
+	<data name="Details_Address" xml:space="preserve"><value>Address</value></data>
+	<data name="Details_Phone" xml:space="preserve"><value>Phone</value></data>
+	<data name="Details_Email" xml:space="preserve"><value>Email</value></data>
+	<data name="Details_Schedule" xml:space="preserve"><value>Opening Hours</value></data>
+	<data name="Details_MenuTitle" xml:space="preserve"><value>Our Menu</value></data>
+	<data name="Details_NoMenu" xml:space="preserve"><value>Menu not available at the moment.</value></data>
+	<data name="Details_ReserveSuccess" xml:space="preserve"><value>Reservation made successfully!</value></data>
+	<data name="Details_ReserveError" xml:space="preserve"><value>Could not make the reservation.</value></data>
+
+	<!-- Account/MyReservations.cshtml -->
+	<data name="MyRes_Title" xml:space="preserve"><value>My Reservations</value></data>
+	<data name="MyRes_Subtitle" xml:space="preserve"><value>View and manage all your reservations.</value></data>
+	<data name="MyRes_NewReservation" xml:space="preserve"><value>New Reservation</value></data>
+	<data name="MyRes_NoReservations" xml:space="preserve"><value>You have no reservations yet.</value></data>
+	<data name="MyRes_NoReservationsHint" xml:space="preserve"><value>Explore the available restaurants and make your first reservation!</value></data>
+	<data name="MyRes_ExploreRestaurants" xml:space="preserve"><value>Explore Restaurants</value></data>
+	<data name="MyRes_People" xml:space="preserve"><value>People</value></data>
+	<data name="MyRes_StatusPending" xml:space="preserve"><value>Pending</value></data>
+	<data name="MyRes_StatusConfirmed" xml:space="preserve"><value>Confirmed</value></data>
+	<data name="MyRes_StatusCanceled" xml:space="preserve"><value>Cancelled</value></data>
+	<data name="MyRes_CancelButton" xml:space="preserve"><value>Cancel Reservation</value></data>
+	<data name="MyRes_CancelConfirm" xml:space="preserve"><value>Are you sure you want to cancel this reservation?</value></data>
+	<data name="MyRes_CancelSuccess" xml:space="preserve"><value>Reservation cancelled successfully!</value></data>
+	<data name="MyRes_CancelError" xml:space="preserve"><value>Could not cancel. Please try again.</value></data>
+	<data name="MyRes_RateExperience" xml:space="preserve"><value>Rate Experience</value></data>
+	<data name="MyRes_AlreadyReviewed" xml:space="preserve"><value>Already reviewed</value></data>
+	<data name="MyRes_ReviewModalTitle" xml:space="preserve"><value>Review</value></data>
+	<data name="MyRes_ReviewStarsLabel" xml:space="preserve"><value>How many stars?</value></data>
+	<data name="MyRes_ReviewCommentLabel" xml:space="preserve"><value>Your comment</value></data>
+	<data name="MyRes_ReviewCommentPlaceholder" xml:space="preserve"><value>How was the food and service?</value></data>
+	<data name="MyRes_ReviewSubmit" xml:space="preserve"><value>Submit Review</value></data>
+	<data name="MyRes_ReviewSuccess" xml:space="preserve"><value>Thank you! Your review was submitted successfully.</value></data>
+	<data name="MyRes_ReviewError" xml:space="preserve"><value>Could not submit the review.</value></data>
+
+	<!-- Restaurants list -->
+	<data name="Restaurants_Title" xml:space="preserve"><value>Restaurants</value></data>
+	<data name="Restaurants_Subtitle" xml:space="preserve"><value>Discover the best restaurants near you.</value></data>
+	<data name="Restaurants_NoResults" xml:space="preserve"><value>No restaurants found. Try another city.</value></data>
+	<data name="Restaurants_ViewDetails" xml:space="preserve"><value>View Details</value></data>
+	<data name="Restaurants_Reserve" xml:space="preserve"><value>Reserve</value></data>
+	<data name="Restaurants_Reviews" xml:space="preserve"><value>reviews</value></data>
+
+	<!-- Common / Shared -->
+	<data name="Common_Back" xml:space="preserve"><value>Back</value></data>
+	<data name="Common_Save" xml:space="preserve"><value>Save</value></data>
+	<data name="Common_Cancel" xml:space="preserve"><value>Cancel</value></data>
+	<data name="Common_Confirm" xml:space="preserve"><value>Confirm</value></data>
+	<data name="Common_Delete" xml:space="preserve"><value>Delete</value></data>
+	<data name="Common_Edit" xml:space="preserve"><value>Edit</value></data>
+	<data name="Common_Close" xml:space="preserve"><value>Close</value></data>
+	<data name="Common_Loading" xml:space="preserve"><value>Loading...</value></data>
+	<data name="Common_Error" xml:space="preserve"><value>An error occurred. Please try again.</value></data>
+	<data name="Common_Success" xml:space="preserve"><value>Operation completed successfully!</value></data>
+	<data name="Common_Yes" xml:space="preserve"><value>Yes</value></data>
+	<data name="Common_No" xml:space="preserve"><value>No</value></data>
+	<data name="Common_Name" xml:space="preserve"><value>Name</value></data>
+	<data name="Common_Email" xml:space="preserve"><value>Email</value></data>
+	<data name="Common_Phone" xml:space="preserve"><value>Phone</value></data>
+	<data name="Common_Address" xml:space="preserve"><value>Address</value></data>
+	<data name="Common_City" xml:space="preserve"><value>City</value></data>
+	<data name="Common_Date" xml:space="preserve"><value>Date</value></data>
+	<data name="Common_Time" xml:space="preserve"><value>Time</value></data>
+	<data name="Common_Status" xml:space="preserve"><value>Status</value></data>
+	<data name="Common_Actions" xml:space="preserve"><value>Actions</value></data>
+	<data name="Lang_PT" xml:space="preserve"><value>Portuguese</value></data>
+	<data name="Lang_EN" xml:space="preserve"><value>English</value></data>
+	<data name="Lang_Switch" xml:space="preserve"><value>Language</value></data>
+
+</root>

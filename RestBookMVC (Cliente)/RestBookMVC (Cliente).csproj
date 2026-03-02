@@ -4,7 +4,27 @@
     <TargetFramework>net8.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
-    <RootNamespace>RestBookMVC__Cliente_</RootNamespace>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Views\Owner\Owner\**" />
+    <Content Remove="Views\Owner\Owner\**" />
+    <EmbeddedResource Remove="Views\Owner\Owner\**" />
+    <None Remove="Views\Owner\Owner\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Localization\SharedResource.en.resx">
+      <LogicalName>RestBookMVC (Cliente).Localization.RestBookMVC__Cliente_.SharedResource.en.resources</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Localization\SharedResource.pt.resx">
+      <LogicalName>RestBookMVC (Cliente).Localization.RestBookMVC__Cliente_.SharedResource.pt.resources</LogicalName>
+    </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="8.0.2" />
+    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="8.15.0" />
+  </ItemGroup>
 
 </Project>

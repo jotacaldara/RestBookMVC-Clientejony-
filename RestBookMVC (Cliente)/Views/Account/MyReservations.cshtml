@@ -1,27 +1,52 @@
 ﻿@using RestBookMVC__Cliente_.DTOs
+@using Microsoft.Extensions.Localization
+@using Microsoft.AspNetCore.Mvc.Localization
+@using RestBookMVC__Cliente_
+@inject IStringLocalizer<SharedResource> Localizer
 @model List<ReservationListDTO>
+
 @{
-    ViewData["Title"] = "Minhas Reservas";
+    ViewData["Title"] = Localizer["MyRes_Title"].Value;
 }
 
 <div class="container py-5">
     <div class="d-flex justify-content-between align-items-center mb-4">
         <div>
-            <h2 class="fw-bold text-dark mb-0">Minhas Reservas</h2>
-            <p class="text-muted small">Gerencie seus agendamentos</p>
+            <h2 class="fw-bold text-dark mb-0">
+                <i class="bi bi-calendar-check me-2 text-primary"></i>@Localizer["MyRes_Title"]
+            </h2>
+            <p class="text-muted small">@Localizer["MyRes_Subtitle"]</p>
         </div>
         <a asp-controller="Home" asp-action="Index" class="btn btn-primary btn-sm rounded-pill px-3">
-            <i class="bi bi-plus-lg"></i> Nova Reserva
+            <i class="bi bi-plus-lg me-1"></i>@Localizer["MyRes_NewReservation"]
         </a>
     </div>
 
+    @if (TempData["Success"] != null)
+    {
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <i class="bi bi-check-circle-fill me-2"></i>@TempData["Success"]
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        </div>
+    }
+
+    @if (TempData["Error"] != null)
+    {
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <i class="bi bi-exclamation-circle-fill me-2"></i>@TempData["Error"]
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        </div>
+    }
+
     @if (Model == null || !Model.Any())
     {
-        <div class="text-center py-5 bg-light rounded-3 border border-dashed">
+        <div class="text-center py-5 bg-light rounded-4 border">
             <i class="bi bi-calendar-x display-4 text-muted opacity-50"></i>
-            <h5 class="mt-3 fw-bold text-secondary">Nenhuma reserva encontrada</h5>
-            <p class="text-muted">Que tal experimentar algo novo hoje?</p>
-            <a asp-controller="Home" asp-action="Index" class="btn btn-outline-primary mt-2">Explorar Restaurantes</a>
+            <h5 class="mt-3 fw-bold text-secondary">@Localizer["MyRes_NoReservations"]</h5>
+            <p class="text-muted">@Localizer["MyRes_NoReservationsHint"]</p>
+            <a asp-controller="Home" asp-action="Index" class="btn btn-outline-primary mt-2 rounded-pill px-4">
+                <i class="bi bi-search me-1"></i>@Localizer["MyRes_ExploreRestaurants"]
+            </a>
         </div>
     }
     else
@@ -31,35 +56,37 @@
             {
                 <div class="col-md-6 col-lg-4">
                     <div class="card h-100 border-0 shadow-sm overflow-hidden">
+
+                        @{
+                            var badgeClass = res.Status switch
+                            {
+                                "Confirmed" => "bg-success",
+                                "Pendent" => "bg-warning text-dark",
+                                "Canceled" => "bg-secondary",
+                                _ => "bg-light text-dark border"
+                            };
+                            var statusLabel = res.Status switch
+                            {
+                                "Confirmed" => Localizer["MyRes_StatusConfirmed"].Value,
+                                "Pendent" => Localizer["MyRes_StatusPending"].Value,
+                                "Canceled" => Localizer["MyRes_StatusCanceled"].Value,
+                                _ => res.Status
+                            };
+                        }
+
                         <div class="card-header bg-white border-0 d-flex justify-content-between align-items-center pt-3 pb-0">
-                            
-                            @{
-                                var badgeClass = res.Status switch
-                                {
-                                    "Confirmed" => "bg-success",
-                                    "Pending" => "bg-warning text-dark",
-                                    "Canceled" => "bg-secondary",
-                                    _ => "bg-light text-dark border"
-                                };
-                                var statusLabel = res.Status switch
-                                {
-                                    "Confirmed" => "Confirmado",
-                                    "Pending" => "Pendente",
-                                    "Canceled" => "Cancelado",
-                                    _ => res.Status
-                                };
-                            }
                             <span class="badge @badgeClass rounded-pill">@statusLabel</span>
+                            <small class="text-muted">#@res.Id</small>
                         </div>
 
                         <div class="card-body">
                             <h5 class="card-title fw-bold text-primary mb-3">@res.RestaurantName</h5>
-                            
+
                             <div class="d-flex align-items-center mb-2">
                                 <i class="bi bi-calendar-event text-muted me-2"></i>
                                 <span>@res.ReservationDate.ToString("dd/MM/yyyy")</span>
                             </div>
-                            
+
                             <div class="d-flex align-items-center mb-2">
                                 <i class="bi bi-clock text-muted me-2"></i>
                                 <span>@res.ReservationDate.ToString("HH:mm")</span>
@@ -67,42 +94,38 @@
 
                             <div class="d-flex align-items-center">
                                 <i class="bi bi-people text-muted me-2"></i>
-                                <span>@res.NumberOfPeople Pessoas</span>
+                                <span>@res.NumberOfPeople @Localizer["MyRes_People"]</span>
                             </div>
                         </div>
 
                         <div class="card-footer bg-light border-0 p-3">
                             @if (res.ReservationDate > DateTime.Now && res.Status != "Canceled")
                             {
-                                <form asp-action="CancelReservation" asp-controller="Account" method="post" onsubmit="return confirm('Tem certeza que deseja cancelar esta reserva?');">
+                                <form asp-action="CancelReservation" asp-controller="Account" method="post"
+                                      onsubmit="return confirm('@Localizer["MyRes_CancelConfirm"]');">
                                     <input type="hidden" name="id" value="@res.Id" />
                                     <button type="submit" class="btn btn-outline-danger btn-sm w-100 fw-bold">
-                                        <i class="bi bi-x-circle me-1"></i> Cancelar Reserva
+                                        <i class="bi bi-x-circle me-1"></i>@Localizer["MyRes_CancelButton"]
                                     </button>
                                 </form>
                             }
-                            else
+                            else if (res.ReservationDate < DateTime.Now && res.Status == "Confirmed")
                             {
-                                @if (res.ReservationDate < DateTime.Now && res.Status == "Confirmed")
+                                @if (res.IsReviewed)
                                 {
-                                    @if (res.IsReviewed)
-                                    {
-                                        <button class="btn btn-outline-secondary btn-sm w-100 fw-bold" disabled>
-                                            <i class="bi bi-check-circle-fill"></i> Já avaliou esta reserva
-                                        </button>
-                                    }
-                                    else
-                                    {
-                                        <button type="button" class="btn btn-warning btn-sm w-100 fw-bold text-dark"
-                                                data-bs-toggle="modal" data-bs-target="#reviewModal"
-                                                onclick="setReviewId(@res.Id, '@res.RestaurantName')">
-                                            <i class="bi bi-star-half"></i> Avaliar Experiência
-                                        </button>
-                                    }
+                                    <button class="btn btn-outline-secondary btn-sm w-100 fw-bold" disabled>
+                                        <i class="bi bi-check-circle-fill me-1"></i>@Localizer["MyRes_AlreadyReviewed"]
+                                    </button>
                                 }
-                               
+                                else
+                                {
+                                    <button type="button" class="btn btn-warning btn-sm w-100 fw-bold text-dark"
+                                            data-bs-toggle="modal" data-bs-target="#reviewModal"
+                                            onclick="setReviewId(@res.Id, '@res.RestaurantName')">
+                                        <i class="bi bi-star-half me-1"></i>@Localizer["MyRes_RateExperience"]
+                                    </button>
+                                }
                             }
-                           
                         </div>
                     </div>
                 </div>
@@ -111,46 +134,56 @@
     }
 </div>
 
-<div class="modal fade" id="reviewModal" tabindex="-1">
-    <div class="modal-dialog">
-        <div class="modal-content">
+<!-- Modal de Avaliação -->
+<div class="modal fade" id="reviewModal" tabindex="-1" aria-labelledby="reviewModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content border-0 shadow">
             <form asp-action="SubmitReview" asp-controller="Restaurants" method="post">
-                <div class="modal-header">
-                    <h5 class="modal-title">Avaliar <span id="modalRestName"></span></h5>
+                <div class="modal-header border-0">
+                    <h5 class="modal-title fw-bold" id="reviewModalLabel">
+                        <i class="bi bi-star-fill text-warning me-2"></i>
+                        @Localizer["MyRes_ReviewModalTitle"] <span id="modalRestName"></span>
+                    </h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                 </div>
                 <div class="modal-body">
                     <input type="hidden" name="ReservationId" id="modalResId" />
 
-                    <div class="mb-3 text-center">
-                        <label class="form-label d-block fw-bold">Quantas estrelas?</label>
-                        <div class="rating-css">
-                            <select name="Rating" class="form-select text-center fs-5 text-warning fw-bold">
-                                <option value="5">⭐⭐⭐⭐⭐ (5)</option>
-                                <option value="4">⭐⭐⭐⭐ (4)</option>
-                                <option value="3">⭐⭐⭐ (3)</option>
-                                <option value="2">⭐⭐ (2)</option>
-                                <option value="1">⭐ (1)</option>
-                            </select>
-                        </div>
+                    <div class="mb-3">
+                        <label class="form-label fw-semibold">@Localizer["MyRes_ReviewStarsLabel"]</label>
+                        <select name="Rating" class="form-select text-center fs-5 fw-bold">
+                            <option value="5">⭐⭐⭐⭐⭐ (5)</option>
+                            <option value="4">⭐⭐⭐⭐ (4)</option>
+                            <option value="3">⭐⭐⭐ (3)</option>
+                            <option value="2">⭐⭐ (2)</option>
+                            <option value="1">⭐ (1)</option>
+                        </select>
                     </div>
 
                     <div class="mb-3">
-                        <label class="form-label">Seu comentário</label>
-                        <textarea name="Comment" class="form-control" rows="3" required placeholder="Como foi a comida e o atendimento?"></textarea>
+                        <label class="form-label fw-semibold">@Localizer["MyRes_ReviewCommentLabel"]</label>
+                        <textarea name="Comment" class="form-control" rows="3" required
+                                  placeholder="@Localizer["MyRes_ReviewCommentPlaceholder"]"></textarea>
                     </div>
                 </div>
-                <div class="modal-footer">
-                    <button type="submit" class="btn btn-primary">Enviar Avaliação</button>
+                <div class="modal-footer border-0">
+                    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
+                        @Localizer["Common_Cancel"]
+                    </button>
+                    <button type="submit" class="btn btn-primary fw-bold">
+                        <i class="bi bi-send me-1"></i>@Localizer["MyRes_ReviewSubmit"]
+                    </button>
                 </div>
             </form>
         </div>
     </div>
 </div>
 
-<script>
-    function setReviewId(id, name) {
-        document.getElementById('modalResId').value = id;
-        document.getElementById('modalRestName').innerText = name;
-    }
-</script>
+@section Scripts {
+    <script>
+        function setReviewId(id, name) {
+            document.getElementById('modalResId').value = id;
+            document.getElementById('modalRestName').innerText = name;
+        }
+    </script>
+}
