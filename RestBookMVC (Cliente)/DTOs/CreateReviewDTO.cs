@@ -2,9 +2,9 @@
 {
     public class CreateReviewDTO
     {
-        public string UserName { get; set; }
+        public int RestaurantId { get; set; }
+        public int ReservationId { get; set; }
         public int Rating { get; set; }
         public string Comment { get; set; }
-        public string Date { get; set; }
     }
 }

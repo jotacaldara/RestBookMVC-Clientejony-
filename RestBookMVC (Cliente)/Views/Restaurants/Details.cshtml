@@ -178,13 +178,13 @@
                                     </div>
                                 </div>
                                 <p class="mb-0 text-secondary">@review.Comment</p>
-                                @if (!string.IsNullOrEmpty(review.Comment))
+                                @if (!string.IsNullOrEmpty(review.Reply))
                                 {
                                     <div class="bg-light rounded p-2 mt-2">
                                         <small class="text-muted fw-semibold">
                                             <i class="bi bi-reply me-1"></i>@Localizer["Details_RestaurantReply"]:
                                         </small>
-                                        <p class="mb-0 small">@review.Comment</p>
+                                        <p class="mb-0 small">@review.Reply</p>
                                     </div>
                                 }
                             </div>
@@ -194,10 +194,8 @@
             </div>
         </div>
 
-        <!-- Coluna Lateral (Reserva + Contacto) -->
         <div class="col-lg-4">
 
-            <!-- Painel de Reserva -->
             <div class="card border-0 shadow-sm mb-4 position-sticky" style="top: 20px;">
                 <div class="card-header bg-primary text-white border-0 rounded-top">
                     <h5 class="mb-0 fw-bold">

@@ -52,20 +52,11 @@ public class RestaurantsController : Controller
             TempData["Error"] = "Dados da avaliação inválidos.";
             return RedirectToAction("MyReservations", "Account");
         }
+        var result = await _api.PostWithResultAsync<dynamic>("api/Reviews", dto);
 
-        var success = await _api.PostAsync("api/Reviews", dto);
-
-        if (success)
-        {
-            TempData["Success"] = "Obrigado! Sua avaliação foi enviada com sucesso.";
-        }
-        else
-        {
-            TempData["Error"] = "Não foi possível enviar a avaliação. Verifique se você já avaliou esta reserva.";
-        }
-
+         TempData["Success"] = "Obrigado! Sua avaliação foi enviada com sucesso.";
+     
         return RedirectToAction("MyReservations", "Account");
     }
-
 
 }

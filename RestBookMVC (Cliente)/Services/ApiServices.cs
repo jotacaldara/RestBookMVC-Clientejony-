@@ -46,6 +46,18 @@ namespace RestBookMVC.Services
             return default;
         }
 
+        public async Task<(bool Success, string? ErrorMessage)> PostWithDetailAsync<T>(string endpoint, T data)
+        {
+            var client = _httpClientFactory.CreateClient(_clientName);
+            var response = await client.PostAsJsonAsync(endpoint, data);
+
+            if (response.IsSuccessStatusCode)
+                return (true, null);
+
+            var error = await response.Content.ReadAsStringAsync();
+            return (false, $"HTTP {(int)response.StatusCode}: {error}");
+        }
+
         public async Task<bool> DeleteAsync(string endpoint)
         {
             var client = _httpClientFactory.CreateClient(_clientName);

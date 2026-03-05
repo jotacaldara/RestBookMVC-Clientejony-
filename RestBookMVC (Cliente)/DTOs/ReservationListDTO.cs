@@ -5,8 +5,9 @@ namespace RestBookMVC__Cliente_.DTOs
 {
     public class ReservationListDTO
     {
-        [JsonPropertyName("reservationId")]
-        public int Id { get; set; }
+        public int ReservationId { get; set; }
+
+        public int RestaurantId { get; set; }
 
         [JsonPropertyName("restaurantName")]
         public string RestaurantName { get; set; } = string.Empty;

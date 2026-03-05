@@ -76,7 +76,7 @@
 
                         <div class="card-header bg-white border-0 d-flex justify-content-between align-items-center pt-3 pb-0">
                             <span class="badge @badgeClass rounded-pill">@statusLabel</span>
-                            <small class="text-muted">#@res.Id</small>
+                            <small class="text-muted">#@res.ReservationId</small>
                         </div>
 
                         <div class="card-body">
@@ -99,17 +99,7 @@
                         </div>
 
                         <div class="card-footer bg-light border-0 p-3">
-                            @if (res.ReservationDate > DateTime.Now && res.Status != "Canceled")
-                            {
-                                <form asp-action="CancelReservation" asp-controller="Account" method="post"
-                                      onsubmit="return confirm('@Localizer["MyRes_CancelConfirm"]');">
-                                    <input type="hidden" name="id" value="@res.Id" />
-                                    <button type="submit" class="btn btn-outline-danger btn-sm w-100 fw-bold">
-                                        <i class="bi bi-x-circle me-1"></i>@Localizer["MyRes_CancelButton"]
-                                    </button>
-                                </form>
-                            }
-                            else if (res.ReservationDate < DateTime.Now && res.Status == "Confirmed")
+                            @if (res.Status == "Confirmed")
                             {
                                 @if (res.IsReviewed)
                                 {
@@ -121,10 +111,20 @@
                                 {
                                     <button type="button" class="btn btn-warning btn-sm w-100 fw-bold text-dark"
                                             data-bs-toggle="modal" data-bs-target="#reviewModal"
-                                            onclick="setReviewId(@res.Id, '@res.RestaurantName')">
+                                            onclick="setReviewId(@res.ReservationId, @res.RestaurantId, '@res.RestaurantName')">
                                         <i class="bi bi-star-half me-1"></i>@Localizer["MyRes_RateExperience"]
                                     </button>
                                 }
+                            }
+                            else if (res.Status == "Pendent" && res.ReservationDate > DateTime.Now)
+                            {
+                                <form asp-action="CancelReservation" asp-controller="Account" method="post"
+                                      onsubmit="return confirm('@Localizer["MyRes_CancelConfirm"]');">
+                                    <input type="hidden" name="id" value="@res.ReservationId" />
+                                    <button type="submit" class="btn btn-outline-danger btn-sm w-100 fw-bold">
+                                        <i class="bi bi-x-circle me-1"></i>@Localizer["MyRes_CancelButton"]
+                                    </button>
+                                </form>
                             }
                         </div>
                     </div>
@@ -147,7 +147,9 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                 </div>
                 <div class="modal-body">
-                    <input type="hidden" name="ReservationId" id="modalResId" />
+                    <input type="hidden" name="ReservationId" id="modalResId"/>
+                    <input type="hidden" name="RestaurantId" id="modalRestId" /> 
+
 
                     <div class="mb-3">
                         <label class="form-label fw-semibold">@Localizer["MyRes_ReviewStarsLabel"]</label>
@@ -181,8 +183,9 @@
 
 @section Scripts {
     <script>
-        function setReviewId(id, name) {
+        function setReviewId(id,restaurantId, name) {
             document.getElementById('modalResId').value = id;
+             document.getElementById('modalRestId').value = restaurantId;
             document.getElementById('modalRestName').innerText = name;
         }
     </script>

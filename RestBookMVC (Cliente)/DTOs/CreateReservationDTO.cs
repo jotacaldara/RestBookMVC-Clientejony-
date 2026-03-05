@@ -2,6 +2,7 @@
 {
     public class CreateReservationDTO
     {
+
         public int RestaurantId { get; set; }
         public int UserId { get; set; }
         public DateTime ReservationDate { get; set; }
